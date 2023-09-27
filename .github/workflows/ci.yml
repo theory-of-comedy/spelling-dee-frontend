@@ -31,7 +31,7 @@ jobs:
         run: yarn add cross-env
 
       - name: Lint
-        run: yarn run format && yarn run lint
+        run: yarn format && yarn lint
 
       - name: Build
-        run: yarn run build --if-present
+        run: yarn build --if-present
