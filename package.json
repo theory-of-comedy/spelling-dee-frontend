@@ -18,7 +18,9 @@
     "eject": "react-scripts eject",
     "prepare": "husky install",
     "pre-commit": "lint-staged",
-    "configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\""
+    "configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
+    "format": "prettier --write .",
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx"
   },
   "eslintConfig": {
     "extends": [
@@ -53,10 +55,13 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "echo ”[Husky] pre-commit” && lint-staged"
+      "pre-commit": "echo ”[Husky] pre-commit”"
     }
   },
   "lint-staged": {
-    "**/*.{js,jsx,json}": ["eslint . --fix", "prettier --write ."]
+    "**/*.{js,jsx,json}": [
+      "eslint src --ext .js,.jsx,.ts,.tsx",
+      "prettier --write ."
+    ]
   }
 }
