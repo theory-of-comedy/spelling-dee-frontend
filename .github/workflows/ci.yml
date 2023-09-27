@@ -22,10 +22,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-        #   cache: 'yarn'
+          cache: 'yarn'
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
+      - name: Change env
+        run: yarn add cross-env
 
       - name: Lint
         run: yarn run format && yarn run lint
