@@ -25,7 +25,7 @@ jobs:
           cache: 'yarn'
 
       - name: Install dependencies
-        run: yarn add
+        run: yarn install
 
       - name: Lint
         run: yarn format && yarn run lint
