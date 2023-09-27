@@ -28,7 +28,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Lint
-        run: yarn format && yarn run lint
+        run: yarn run format && yarn run lint
 
       - name: Build
         run: yarn run build --if-present
