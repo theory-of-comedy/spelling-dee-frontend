@@ -2,13 +2,12 @@ name: Frontend CI
 
 on:
   push:
-    branches: [ "main", "dev" ]
+    branches: ['main', 'dev', 'test-husky-cicd']
   pull_request:
-    branches: [ "main", "dev" ]
+    branches: ['main', 'dev', 'test-husky-cicd']
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -17,20 +16,20 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'yarn'
-        
-    - name: Install dependencies
-      run: yarn add 
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
 
-    - name: Lint
-      run: yarn format && yarn run lint
+      - name: Install dependencies
+        run: yarn add
 
-    - name: Build
-      run: yarn run build --if-present
+      - name: Lint
+        run: yarn format && yarn run lint
+
+      - name: Build
+        run: yarn run build --if-present
