@@ -3,16 +3,15 @@ version: "3.8"
 services:
   app:
     container_name: app-prod
-    image: app-prod
     build:
       context: .
-      target: production
+      dockerfile: Dockerfile
     environment:
       - PORT
     ports:
-      - ${PORT}:3000'
-    networks:
-      - networks-frontend
+      - ${PORT}:80'
+    networks: 
+      - spelling-dee
     restart: always
 
 networks:
