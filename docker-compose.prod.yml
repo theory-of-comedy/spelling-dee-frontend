@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: app-prod
+    image: app-prod
+    build:
+      context: .
+      target: production
+    environment:
+      - PORT
+    ports:
+      - ${PORT}:3000'
+    networks:
+      - networks-frontend
+    restart: always
+
+networks:
+  spelling-dee:
+    driver: bridge
