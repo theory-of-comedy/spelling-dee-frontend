@@ -2,14 +2,12 @@ version: '3.8'
 
 services:
   app:
-    container_name: app-prod
+    container_name: app-dev
     build:
       context: .
       dockerfile: Dockerfile
-    environment:
-      - PORT
     ports:
-      - '${PORT}:80'
+      - '80:80'
     networks:
       - spelling-dee
     restart: always
