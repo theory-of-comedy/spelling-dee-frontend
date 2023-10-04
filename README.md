@@ -32,7 +32,7 @@ Run Lint testing.
 Formating code.
 `yarn format`
 
-Builds the app for production to the ```build``` folder.
+Builds the app for production to the `build` folder.
 `yarn build`
 
 Remove the single build dependency from your project.
