@@ -1,5 +1,6 @@
 FROM node:18-alpine AS builder
 ENV NODE_ENV production
+ENV DISABLE_ESLINT_PLUGIN true
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install
