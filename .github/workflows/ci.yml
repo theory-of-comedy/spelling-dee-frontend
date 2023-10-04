@@ -2,9 +2,9 @@ name: Frontend CI
 
 on:
   push:
-    branches: ['main', 'dev', 'test-husky-cicd']
+    branches: ['main', 'dev']
   pull_request:
-    branches: ['main', 'dev', 'test-husky-cicd']
+    branches: ['main', 'dev']
 
 jobs:
   build:
@@ -26,9 +26,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
-
-      - name: Change env
-        run: yarn add cross-env
 
       - name: Lint
         run: yarn format && yarn lint
