@@ -13,7 +13,7 @@ Install dependencies
 Enable husky
 `yarn prepare`
 
-Deploy on your local development 
+Deploy on your local development
 `docker compose -f docker-compose.dev.yml up -d --build`
 
 ## Available Scripts
