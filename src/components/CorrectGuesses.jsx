@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function CorrectGuesses() {
-  return (
-    <div>
-      
-    </div>
-  )
+  return <div></div>;
 }
 
-export default CorrectGuesses
+export default CorrectGuesses;
