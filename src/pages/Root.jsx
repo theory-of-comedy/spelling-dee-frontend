@@ -20,12 +20,28 @@ function Root() {
             01076121 Theory of Computation Assignment an Application of Regular
             Expression Computer Engineering, KMITL
           </p>
-          <Link
-            className="py-2 px-5 bg-[#FFD747] rounded-xl text-black md:text-base text-xs"
-            to="/selectmode"
-          >
-            Get start
-          </Link>
+          <div className="flex justify-start items-center gap-x-3">
+            <Link
+              className="py-2 px-5 bg-[#FFD747] rounded-xl text-black md:text-base text-xs h-10 flex justify-center items-center"
+              to="/selectmode"
+            >
+              Get start
+            </Link>
+            <a
+              className="py-2 px-5 bg-white rounded-xl text-black md:text-base text-xs flex gap-x-1 justify-center items-center  h-10"
+              to="/selectmode"
+              href="https://github.com/theory-of-comedy"
+              target="_blank"
+            >
+              <span>
+                <img
+                  src="https://pngimg.com/d/github_PNG58.png"
+                  className="h-6 w-6"
+                />
+              </span>
+              <div className="whitespace-nowrap">Source code</div>
+            </a>
+          </div>
         </div>
         <div className="sm:w-[40%] md:pl-0 pl-5">
           <img src={bee} alt="" className="w-full md:h-full h-56" />
