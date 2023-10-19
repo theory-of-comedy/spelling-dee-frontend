@@ -1,54 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Game from '../components/Game';
+import axios from 'axios';
 
 function GamePlay() {
-  const wordList = [
-    {
-      image: [
-        {
-          name: 'meow',
-          wordImg:
-            'https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg',
-        },
-        {
-          name: 'meow2',
-          wordImg:
-            'https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg',
-        },
-      ],
-    },
-    {
-      image: [
-        {
-          name: 'meow',
-          wordImg:
-            'https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg',
-        },
-        {
-          name: 'meow2',
-          wordImg:
-            'https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg',
-        },
-      ],
-    },
-    {
-      image: [
-        {
-          name: 'meow',
-          wordImg:
-            'https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg',
-        },
-        {
-          name: 'meow2',
-          wordImg:
-            'https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg',
-        },
-      ],
-    },
-  ];
+  const [wordList, setWordlist] = useState([]);
+  useEffect(() => {
+    axios
+      .get('https://api-spelling-dee.redaxn.com/words?words=5')
+      .then((response) => {
+        setWordlist(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
-    <div className="w-screen h-screen flex justify-center items-center">
-      <Game wordList={wordList[0]} />
+    <div className="w-screen h-screen flex justify-center items-center bg-black">
+      <Game wordList={wordList} />
     </div>
   );
 }

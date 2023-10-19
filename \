@@ -1,46 +1,18 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import Navbar from './Navbar';
-import WinModal from './WinModal';
 
 function Game({ wordList }) {
-  const [point, setPoint] = useState(0);
-  const [isModal, setIsModal] = useState(false);
-  const [wordIndex, setWordIndex] = useState(0);
   let initAnswer = '';
-  for (let i = 0; i < wordList[wordIndex]?.word?.length; i++) {
+  for (let i = 0; i < wordList?.word?.length; i++) {
     initAnswer += '_';
   }
+
   const [answer, setAnswer] = useState(initAnswer ? initAnswer : '');
   const submitAnswer = () => {
-    axios
-      .get(`https://api-spelling-dee.redaxn.com/word/check?word=${answer}`)
-      .then((response) => {
-        if (response.data) {
-          setPoint(point + 20);
-          setWordIndex(wordIndex + 1);
-          console.log(wordIndex);
-          if (wordIndex === wordList?.length) {
-            setIsModal(true);
-          }
-        } else {
-          setAnswer(initAnswer);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
     console.log(answer);
   };
 
   const replace = (str, index, replace) => {
-    const strList = str.split('');
-    strList[index] = replace;
-    return strList.join('');
-  };
-  const closeWinModal = () => {
-    console.log('hello world');
-    setIsModal(false);
+    return str.slice(0, index) + replace + str.slice(index, str.length - 1);
   };
   useEffect(() => {
     const handleKeyPress = (e) => {
@@ -54,13 +26,12 @@ function Game({ wordList }) {
       } else if (e.key === 'Backspace') {
         for (let i = answer.length - 1; i >= 0; i--) {
           if (answer[i] !== '_') {
-            setAnswer(replace(answer, i, '_'));
+            const answerList = answer.split('');
+            answerList[i] = '_';
+            setAnswer(answerList.join(''));
             break;
           }
         }
-      } else if (e.key === 'Enter') {
-        setIsModal(true);
-        submitAnswer();
       }
     };
     window.addEventListener('keydown', handleKeyPress);
@@ -74,10 +45,8 @@ function Game({ wordList }) {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      {isModal && <WinModal point={point} closeWinModal={closeWinModal} />}
-      <Navbar words={wordList?.length} point={point} />
       <div className="flex justify-center items-center ">
-        {wordList[wordIndex]?.images.map((item, index) => (
+        {wordList?.images.map((item, index) => (
           <div key={index} className="flex justify-center items-center">
             {index !== 0 && <h1 className=" text-4xl text-white px-10">+</h1>}
             <div className="w-64 h-64 rounded-3xl border-4 border-primary">
@@ -89,12 +58,7 @@ function Game({ wordList }) {
       <div className="flex justify-center w-full px-5 pt-28">
         <div className="text-white border-2 border-primary rounded-2xl px-5 w-full py-5 flex justify-center text-5xl space-x-6">
           {answer.split('').map((item, index) => (
-            <div
-              key={index}
-              className={item === '_' ? 'text-white' : 'text-primary'}
-            >
-              {item}
-            </div>
+            <div key={index}>{item}</div>
           ))}
         </div>
       </div>
