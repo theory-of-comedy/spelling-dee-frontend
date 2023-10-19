@@ -9,8 +9,8 @@ module.exports = {
         'main-bg': "url('/public/main-bg.jpg')",
       },
       fontFamily: {
-        Poppins: ["Poppins", "cursive"],
-       },
+        Poppins: ['Poppins', 'cursive'],
+      },
     },
   },
   plugins: [],
