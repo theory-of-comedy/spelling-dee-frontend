@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Navbar from './Navbar';
 import WinModal from './WinModal';
 
@@ -64,6 +64,21 @@ function Game({ wordList }) {
   const closeWinModal = () => {
     setIsModal(false);
   };
+  const ref = useRef(null);
+
+  const [viewport, setViewport] = useState({
+    maxHeight: '100vh',
+    maxWidth: '100vw',
+  });
+
+  const updateViewport = () => {
+    setViewport({
+      maxHeight: window.visualViewport.height,
+      maxWidth: window.visualViewport.width,
+    });
+
+    window.scrollTo(0, ref.current.offsetTop);
+  };
   useEffect(() => {
     const handleKeyPress = (e) => {
       if (e.key.length === 1 && e.key.match(/[a-z]/)) {
@@ -85,8 +100,10 @@ function Game({ wordList }) {
       }
     };
     window.addEventListener('keydown', handleKeyPress);
+    window.visualViewport.addEventListener('resize', updateViewport);
     return () => {
       window.removeEventListener('keydown', handleKeyPress);
+      window.visualViewport.removeEventListener('resize', updateViewport);
     };
   });
   useEffect(() => {
@@ -112,7 +129,7 @@ function Game({ wordList }) {
     <div className="flex flex-col justify-center items-center">
       <div className="absolute text-white bottom-12 w-full flex justify-center items-center ">
         <div
-          className={`bg-white text-black px-5 py-3 rounded-xl text-3xl font-bold border-4 border-primary ${
+          className={`bg-white text-black px-5 py-3 rounded-xl md:text-3xl text-base font-bold border-4 border-primary ${
             secondLeft < 5 ? 'border-4 border-red-500' : ''
           }`}
         >
@@ -124,16 +141,21 @@ function Game({ wordList }) {
       <div className="flex justify-center items-center ">
         {wordList[wordIndex]?.images.map((item, index) => (
           <div key={index} className="flex justify-center items-center">
-            {index !== 0 && <h1 className=" text-4xl text-white px-10">+</h1>}
-            <div className="w-64 h-64 rounded-3xl border-4 border-primary">
-              <img src={item} className="w-full h-full rounded-3xl" />
+            {index !== 0 && (
+              <h1 className=" md:text-4xl text-white md:px-10 px-3">+</h1>
+            )}
+            <div className="md:w-64 md:h-64 w-20 h-20 md:rounded-3xl rounded border-4 border-primary">
+              <img
+                src={item}
+                className="w-full h-full md:rounded-3xl rounded"
+              />
             </div>
           </div>
         ))}
       </div>
       <div className="flex justify-center w-full px-5 pt-28">
         <div
-          className={`text-white border-2 border-primary rounded-2xl px-5 w-full py-5 flex justify-center text-5xl space-x-6 font-extrabold ${
+          className={`text-white border-2 border-primary rounded-xl md:rounded-2xl md:px-5 w-full md:py-5 py-2 px-4 flex justify-center md:text-5xl text-sm md:space-x-6 space-x-2 font-extrabold ${
             isInvalid ? 'border-red-500' : ''
           }`}
         >
@@ -147,7 +169,7 @@ function Game({ wordList }) {
           ))}
         </div>
       </div>
-      <div className="pt-16">
+      <div className="md:pt-16 pt-10">
         <button
           className="px-4 py-2 rounded-2xl bg-primary text-black "
           onClick={submitAnswer}

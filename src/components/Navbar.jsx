@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 function Navbar({ words, point }) {
   return (
-    <nav className="fixed top-0 bg-primary z-20 w-full h-16 flex justify-between items-center px-16">
-      <div className="flex items-center gap-x-8">
+    <nav className="fixed top-0 bg-primary z-20 w-full h-16 flex justify-between items-center md:px-16 px-10">
+      <div className="flex items-center md:gap-x-8 gap-x-4">
         <Link to="/selectmode" className="text-black">
           {'<'}
         </Link>
