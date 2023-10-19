@@ -10,7 +10,7 @@ Clone this project
 Install dependencies
 `yarn install`
 
-Enable husky
+Enable husky (if not install automatically)
 `yarn prepare`
 
 Deploy on your local development
@@ -35,8 +35,10 @@ Formating code.
 Builds the app for production to the `build` folder.
 `yarn build`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Remove the single build dependency from your project.
 `yarn eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
 If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
