@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Game(wordList) {
+function Game({ wordList }) {
   console.log(wordList);
 
   const [answer, setAnswer] = useState('');

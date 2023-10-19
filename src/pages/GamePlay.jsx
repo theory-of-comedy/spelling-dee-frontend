@@ -1,7 +1,7 @@
 import React from 'react';
 import Game from '../components/Game';
 
-function EndlessMode() {
+function GamePlay() {
   const wordList = [
     {
       image: [
@@ -53,4 +53,4 @@ function EndlessMode() {
   );
 }
 
-export default EndlessMode;
+export default GamePlay;

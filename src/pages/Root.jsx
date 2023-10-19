@@ -5,7 +5,7 @@ function Root() {
   const menuLink = [
     {
       title: 'Endless mode',
-      path: '/endless',
+      path: '/gameplay',
     },
     {
       title: 'Lorem mode',
@@ -18,12 +18,12 @@ function Root() {
   ];
 
   return (
-    <div className="flex justify-center  w-screen h-screen items-center">
+    <div className="flex justify-center  w-screen h-screen items-center bg-black text-white">
       <div className="flex justify-center flex-col items-center gap-y-10">
         <h1 className="text-5xl">Spelling dee</h1>
         <div className="flex flex-col gap-y-3">
           {menuLink.map((item) => (
-            <Link to={item.path} key={item.title} class="text-3xl">
+            <Link to={item.path} key={item.title} className="text-3xl">
               {item.title}
             </Link>
           ))}
