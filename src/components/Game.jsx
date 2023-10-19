@@ -152,10 +152,7 @@ function Game({ wordList }) {
             </div>
           ))}
         </div>
-        <input
-          className="absolute w-full  focus:outline-none h-24 bg-transparent text-transparent md:hidden "
-          onChange={(e) => e.preventDefault()}
-        />
+        <input className="absolute w-full  focus:outline-none h-24 bg-transparent text-transparent md:hidden caret-transparent" />
       </div>
       <div className="md:pt-16 pt-10">
         <button
