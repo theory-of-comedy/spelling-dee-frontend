@@ -20,7 +20,7 @@ const SelectMode = () => {
   ];
   return (
     <div className="w-screen h-screen bg-main-bg bg-no-repeat bg-cover bg-center">
-      <div className="fixed w-full h-16 justify-center items-center bg-primary flex text-2xl font-bold px-16">
+      <div className="fixed w-full h-16 justify-center items-center bg-primary flex md:text-2xl text-base font-bold md:px-16 px-3">
         <div>
           <Link className="text-base" to="/">
             {'<'}
@@ -30,19 +30,19 @@ const SelectMode = () => {
           How many word do you want to play?
         </div>
       </div>
-      <div className="pt-80 w-full flex justify-center items-center text-white">
-        <div className="flex justify-between items-center gap-x-20">
-          <img src={bee2} alt="bee2" />
+      <div className="md:pt-80 pt-40 w-full flex justify-center items-center text-white">
+        <div className="flex md:flex-row flex-col justify-between items-center md:gap-x-20 gap-y-10">
+          <img src={bee2} alt="bee2" className="md:h-fit h-24" />
           {mode.map((item, index) => (
             <Link
-              className="rounded-full  bg-white border-primary border-2 w-28 h-28 flex justify-center items-center text-black font-bold text-2xl"
+              className="rounded-full  bg-white border-primary border-2 md:w-28 md:h-28 w-14 h-14 flex justify-center items-center text-black font-bold text-2xl"
               key={index}
               to={item.path}
             >
               {item.title}
             </Link>
           ))}
-          <img src={bee3} alt="bee3" className="pt-40" />
+          <img src={bee3} alt="bee3" className="md:pt-40 h-40 md:h-fit " />
         </div>
       </div>
     </div>
