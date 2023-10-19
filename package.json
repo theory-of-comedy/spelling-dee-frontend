@@ -26,12 +26,6 @@
     "pre-deploy": "docker-compose -f docker-compose.dev.yml down",
     "deploy": "docker-compose -f docker-compose.prod.yml up -d --build"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
