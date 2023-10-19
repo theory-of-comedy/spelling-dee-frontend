@@ -10,7 +10,7 @@ const router = createBrowserRouter([
     element: <Root />,
   },
   {
-    path: '/gameplay',
+    path: '/gameplay/:wordCount',
     element: <GamePlay />,
   },
   {
