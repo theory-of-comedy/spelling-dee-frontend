@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import WinModal from './WinModal';
 
@@ -64,21 +64,7 @@ function Game({ wordList }) {
   const closeWinModal = () => {
     setIsModal(false);
   };
-  const ref = useRef(null);
 
-  const [viewport, setViewport] = useState({
-    maxHeight: '100vh',
-    maxWidth: '100vw',
-  });
-
-  const updateViewport = () => {
-    setViewport({
-      maxHeight: window.visualViewport.height,
-      maxWidth: window.visualViewport.width,
-    });
-
-    window.scrollTo(0, ref.current.offsetTop);
-  };
   useEffect(() => {
     const handleKeyPress = (e) => {
       if (e.key.length === 1 && e.key.match(/[a-z]/)) {
@@ -100,10 +86,8 @@ function Game({ wordList }) {
       }
     };
     window.addEventListener('keydown', handleKeyPress);
-    window.visualViewport.addEventListener('resize', updateViewport);
     return () => {
       window.removeEventListener('keydown', handleKeyPress);
-      window.visualViewport.removeEventListener('resize', updateViewport);
     };
   });
   useEffect(() => {
@@ -153,7 +137,7 @@ function Game({ wordList }) {
           </div>
         ))}
       </div>
-      <div className="flex justify-center w-full px-5 pt-28">
+      <div className="flex justify-center w-full px-5 pt-28 relative">
         <div
           className={`text-white border-2 border-primary rounded-xl md:rounded-2xl md:px-5 w-full md:py-5 py-2 px-4 flex justify-center md:text-5xl text-sm md:space-x-6 space-x-2 font-extrabold ${
             isInvalid ? 'border-red-500' : ''
@@ -168,6 +152,10 @@ function Game({ wordList }) {
             </div>
           ))}
         </div>
+        <input
+          className="absolute w-full  focus:outline-none h-24 bg-transparent text-transparent md:hidden "
+          onChange={(e) => e.preventDefault()}
+        />
       </div>
       <div className="md:pt-16 pt-10">
         <button
