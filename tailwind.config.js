@@ -5,6 +5,12 @@ module.exports = {
       colors: {
         primary: '#FFD747',
       },
+      backgroundImage: {
+        'main-bg': "url('/public/main-bg.jpg')",
+      },
+      fontFamily: {
+        Poppins: ["Poppins", "cursive"],
+       },
     },
   },
   plugins: [],
