@@ -1,5 +1,6 @@
 import React from 'react';
 import bee from '../assets/bee.png';
+import { Link } from 'react-router-dom';
 
 function Root() {
   return (
@@ -7,7 +8,7 @@ function Root() {
       <div className="flex items-center w-full flex-wrap-reverse">
         <div className="lg:pl-32 md:pl-16 pl-8 sm:w-[60%] font-Poppins">
           <h1 className="text-[#FFD747] font-bold mb-10 lg:text-3xl md:text-2xl text-xl">
-            SPELLING BEE DA VINCI CODE
+            SPELLING DEE DA VINCI CODE
           </h1>
           <h3 className="text-[#FFD747] font-bold mb-5 text-xl">Proved By</h3>
           <h1 className="text-white font-bold mb-5 lg:text-5xl text-4xl">
@@ -17,9 +18,12 @@ function Root() {
             01076121 Theory of Computation Assignment an Application of Regular
             Expression Computer Engineering, KMITL
           </p>
-          <button className="py-2 px-5 bg-[#FFD747] rounded-xl text-black">
+          <Link
+            className="py-2 px-5 bg-[#FFD747] rounded-xl text-black"
+            to="/selectmode"
+          >
             Get start
-          </button>
+          </Link>
         </div>
         <div className="sm:w-[40%]">
           <img src={bee} alt="" className="w-full h-ful" />
