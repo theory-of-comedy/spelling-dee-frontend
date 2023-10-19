@@ -30,19 +30,19 @@ const SelectMode = () => {
           How many word do you want to play?
         </div>
       </div>
-      <div className="md:pt-80 pt-40 w-full flex justify-center items-center text-white">
-        <div className="flex md:flex-row flex-col justify-between items-center md:gap-x-20 gap-y-10">
+      <div className="md:pt-80 pt-32 w-full flex justify-center items-center text-white">
+        <div className="flex md:flex-row flex-col justify-between items-center md:gap-x-20 gap-y-4">
           <img src={bee2} alt="bee2" className="md:h-fit h-24" />
           {mode.map((item, index) => (
             <Link
-              className="rounded-full  bg-white border-primary border-2 md:w-28 md:h-28 w-14 h-14 flex justify-center items-center text-black font-bold text-2xl"
+              className="rounded-full  bg-white border-primary border-2 md:w-28 md:h-28 w-14 h-14 flex justify-center items-center text-black font-bold md:text-2xl text-lg"
               key={index}
               to={item.path}
             >
               {item.title}
             </Link>
           ))}
-          <img src={bee3} alt="bee3" className="md:pt-40 h-40 md:h-fit " />
+          <img src={bee3} alt="bee3" className="md:pt-40 h-32 md:h-fit " />
         </div>
       </div>
     </div>
